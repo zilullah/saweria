@@ -1,36 +1,82 @@
-<link rel="stylesheet" href="style.css">
 <div class="overlay">
   <div class="alert">
-    <div class="alert-frame" aria-hidden="true"></div>
-    <div class="sakura-field" aria-hidden="true">
-      <span class="sakura" style="--l:6%;--dur:6.2s;--del:0s;--dr:60px"></span>
-      <span class="sakura" style="--l:24%;--dur:7.4s;--del:.9s;--dr:-40px"></span>
-      <span class="sakura" style="--l:45%;--dur:6.8s;--del:1.8s;--dr:70px"></span>
-      <span class="sakura" style="--l:66%;--dur:7s;--del:.6s;--dr:-55px"></span>
-      <span class="sakura" style="--l:85%;--dur:6.5s;--del:2.4s;--dr:45px"></span>
-      <span class="sakura" style="--l:14%;--dur:7.8s;--del:3.2s;--dr:-35px"></span>
-      <span class="sakura" style="--l:77%;--dur:7.2s;--del:1.4s;--dr:50px"></span>
-    </div>
-    <div class="alert-decoration" aria-hidden="true">
-      <span class="frost"></span>
-      <span class="crimson-line"></span>
+
+    <div style="position:absolute;
+        inset:0;
+        background:
+          linear-gradient(180deg,rgba(9,9,11,.55),rgba(9,9,11,.75) 55%,rgba(9,9,11,.92)),
+          url('https://ik.imagekit.io/jxvr6gdka/wallpaperflare.com_wallpaper.jpg') center/cover no-repeat;
+        border:1px solid #dce6ea;
+        clip-path:polygon(0 0,96% 0,100% 24px,100% 100%,4% 100%,0 90%);" class="alert-frame"></div>
+
+    <div style="position:fixed;
+        inset:0;
+        overflow:hidden;
+        pointer-events:none;
+        z-index:1;" class="sakura-field">
+      <span class="sakura s1"></span>
+      <span class="sakura s2"></span>
+      <span class="sakura s3"></span>
+      <span class="sakura s4"></span>
+      <span class="sakura s5"></span>
+      <span class="sakura s6"></span>
+      <span class="sakura s7"></span>
     </div>
 
-    <div class="hiyuki-portrait">
-      <div class="hiyuki-portrait-ring"></div>
-      <img class="hiyuki-gif" src="https://media1.tenor.com/m/RjqDQGM1fxoAAAAC/hiyuki-wuwa-kuchibayuri.gif"
-        alt="Hiyuki">
+    <div style="position:absolute;
+        inset:0;
+        z-index:2;
+        pointer-events:none;">
+      <span style="position:absolute;
+          top:0;
+          left:8%;
+          width:84%;
+          height:2px;
+          background:linear-gradient(90deg,transparent,#dce6ea,transparent);"></span>
+
+      <span style="position:absolute;
+          bottom:0;
+          left:20%;
+          width:60%;
+          height:3px;
+          background:linear-gradient(90deg,transparent,#b71935,#e33b4f,transparent);"></span>
     </div>
 
-    <div class="content" role="status" aria-live="polite" aria-atomic="true">
-      <div class="donation-meta">
-        <div class="amount">{amount}</div>
-        <div class="donator">{donator}</div>
+    <div class="portrait">
+      <div style="position:absolute;
+          inset:0;
+          border-radius:50%;
+          background:conic-gradient(#dce6ea,#b71935,#e33b4f,#e58b9c,#dce6ea);
+          box-shadow:0 0 18px #e33b4f;"></div>
+
+      <img src="https://media1.tenor.com/m/RjqDQGM1fxoAAAAC/hiyuki-wuwa-kuchibayuri.gif" class="hiyuki">
+    </div>
+
+    <div class="content">
+
+      <div class="amount">
+        {amount}
       </div>
-      <div class="message">{message}</div>
-      <div class="wishlist">{wishlist}</div>
-      <div class="top-up-product">{top_up_product_name}</div>
-      <img class="media" src="{media}" alt="">
+
+      <div class="donator">
+        {donator}
+      </div>
+
+      <div class="message">
+        {message}
+      </div>
+
+      <div class="wishlist">
+        {wishlist}
+      </div>
+
+      <div class="product">
+        {top_up_product_name}
+      </div>
+
+      <img src="{media}" class="media">
+
     </div>
+
   </div>
 </div>
