@@ -6,90 +6,114 @@ background:transparent
 }
 
 .overlay{
-padding:36px 0;
-font-family:Segoe UI,Arial,sans-serif;
-color:#f4f1f3
+width:100%;
+padding:20px 0;
+font-family:"Segoe UI",Arial,sans-serif
 }
 
 .alert{
 position:relative;
-width:80%;
-max-width:704px;
+width:850px;
+max-width:95%;
+height:170px;
 margin:auto;
-animation:exit .6s ease-in 9.4s forwards
+overflow:hidden;
+border:1px solid #dce6ea;
+border-radius:15px;
+color:#f4f1f3;
+box-shadow:0 5px 15px #0008,0 0 15px #e33b4f55;
+animation:show .45s ease-out,hide .6s ease-in 9.4s forwards
 }
 
-.portrait{
-position:relative;
-width:128px;
-height:128px;
-margin:-28px auto 0;
-z-index:3;
-animation:enter .4s ease-out .3s both
+.bg{
+position:absolute;
+inset:0;
+z-index:0;
+background:
+linear-gradient(90deg,#09090be8 0%,#09090bc9 30%,#15131891 70%,#09090b73 100%),
+url("https://ik.imagekit.io/jxvr6gdka/wallpaperflare.com_wallpaper.jpg")
+center/cover no-repeat
+}
+
+.character{
+position:absolute;
+z-index:2;
+left:0;
+top:0;
+width:220px;
+height:100%;
+overflow:hidden
 }
 
 .hiyuki{
-position:absolute;
-inset:6px;
-width:116px;
-height:116px;
-border-radius:50%;
-object-fit:cover
+display:block;
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+filter:drop-shadow(3px 0 5px #000)
 }
 
 .content{
-position:relative;
+position:absolute;
 z-index:3;
-padding:20px 32px 24px;
-text-align:center
+left:220px;
+right:0;
+top:0;
+height:100%;
+padding:18px 25px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+text-shadow:2px 2px 3px #000,0 0 4px #000
 }
 
-.amount{
-font-size:52px;
-font-weight:700;
-line-height:1.1;
-color:#f4f1f3;
-animation:enter .4s ease-out .4s both
-}
-
-.donator{
-margin-top:6px;
-font-size:34px;
-font-weight:600;
-color:#e33b4f;
+.headline{
+width:100%;
 overflow:hidden;
-text-overflow:ellipsis;
+font-size:26px;
+font-weight:800;
+line-height:1.2;
 white-space:nowrap;
-animation:enter .4s ease-out .45s both
+text-overflow:ellipsis
 }
+
+.amount{color:#dce6ea}
+.from{color:#fff}
+.donator{color:#e33b4f}
 
 .message{
-margin-top:12px;
-font-size:28px;
-line-height:1.4;
-white-space:pre-wrap;
-overflow-wrap:break-word;
-animation:enter .4s ease-out .6s both
+margin-top:15px;
+max-width:100%;
+font-size:22px;
+font-weight:700;
+line-height:1.3;
+overflow:hidden;
+display:-webkit-box;
+-webkit-box-orient:vertical;
+-webkit-line-clamp:3
 }
 
 .wishlist,.product{
-margin-top:12px;
-font-size:20px;
-animation:enter .4s ease-out .6s both
+margin-top:5px;
+font-size:14px;
+color:#e58b9c
 }
 
-.message:empty,
-.wishlist:empty,
-.product:empty{
+.wishlist:empty,.product:empty{
 display:none
 }
 
 .media{
-display:block;
-max-width:120px;
-max-height:120px;
-margin:12px auto 0;
-object-fit:contain
+position:absolute;
+right:10px;
+bottom:10px;
+max-width:50px;
+max-height:50px;
+object-fit:contain;
+border-radius:5px
 }
 
 .media:not([src]),
@@ -98,29 +122,27 @@ object-fit:contain
 display:none
 }
 
-.sakura{
+.accent{
 position:absolute;
-top:-30px;
-width:14px;
-height:21px;
-background:#e58b9c;
-border-radius:75% 0 75% 35%;
-opacity:0;
-animation:petal 7s linear forwards
+z-index:5;
+left:3%;
+right:3%;
+bottom:0;
+height:3px;
+background:linear-gradient(
+90deg,
+transparent,
+#b71935,
+#e33b4f,
+#e58b9c,
+transparent
+)
 }
 
-.s1{left:6%;--d:60px}
-.s2{left:24%;--d:-40px;animation-delay:.8s}
-.s3{left:45%;--d:70px;animation-delay:1.6s}
-.s4{left:66%;--d:-55px;animation-delay:.5s}
-.s5{left:85%;--d:45px;animation-delay:2.2s}
-.s6{left:14%;--d:-35px;animation-delay:3s}
-.s7{left:77%;--d:50px;animation-delay:1.2s}
-
-@keyframes enter{
+@keyframes show{
 from{
 opacity:0;
-transform:translateY(8px)
+transform:translateY(12px)
 }
 to{
 opacity:1;
@@ -128,26 +150,58 @@ transform:none
 }
 }
 
-@keyframes petal{
-0%{
-opacity:0;
-transform:translate(0,0) rotate(-20deg)
-}
-10%{opacity:.9}
-90%{opacity:.8}
-100%{
-opacity:0;
-transform:translate(var(--d),100vh) rotate(220deg)
-}
-}
-
-@keyframes exit{
-0%,20%{
-opacity:1
-}
-100%{
+@keyframes hide{
+to{
 opacity:0;
 transform:translateY(-8px);
 visibility:hidden
+}
+}
+
+@media(max-width:700px){
+.alert{height:140px}
+.character{width:180px}
+.content{left:180px;padding:12px 15px}
+.headline{font-size:21px}
+.message{font-size:18px;margin-top:10px}
+}
+
+.sakura-field{
+position:absolute;
+inset:0;
+z-index:2;
+overflow:hidden;
+pointer-events:none
+}
+
+.sakura{
+position:absolute;
+top:-20px;
+width:9px;
+height:13px;
+background:#e58b9c;
+border-radius:80% 0 80% 35%;
+opacity:0;
+filter:drop-shadow(0 0 2px #e33b4f88);
+animation:sakuraFall 4.8s linear forwards
+}
+
+.s1{left:28%;--x:35px;animation-delay:.2s}
+.s2{left:42%;--x:-25px;animation-delay:1.1s}
+.s3{left:55%;--x:30px;animation-delay:.6s}
+.s4{left:68%;--x:-35px;animation-delay:1.8s}
+.s5{left:80%;--x:25px;animation-delay:.9s}
+.s6{left:92%;--x:-30px;animation-delay:2.4s}
+
+@keyframes sakuraFall{
+0%{
+opacity:0;
+transform:translate(0,-15px) rotate(0)
+}
+12%{opacity:.75}
+80%{opacity:.6}
+100%{
+opacity:0;
+transform:translate(var(--x),190px) rotate(260deg)
 }
 }
