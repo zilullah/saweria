@@ -1,14 +1,3 @@
-# Hiyuki Saweria Overlay
-
-Custom donation alert terinspirasi Hiyuki dari Wuthering Waves, dengan arah visual burning sakura through snow. Struktur mengikuti [AvuxDemons/SaweriaOverlay](https://github.com/AvuxDemons/SaweriaOverlay/blob/master/readme.md).
-
-File produksi:
-
-- `template/hiyuki/index.html`
-- `template/hiyuki/style.css`
-
-Tidak membutuhkan framework, backend, JavaScript, font eksternal, atau build. Dekorasi menggunakan CSS tanpa artwork resmi.
-
 ## Installation
 
 1. Buka [Saweria Overlay](https://saweria.co/overlays), pilih Alert, lalu Custom.
@@ -31,16 +20,16 @@ Preview browser lokal belum diverifikasi. Screenshot yang dibuat oleh pemeriksaa
 
 Properti yang dapat diubah berada di awal `style.css`:
 
-| Properti | Fungsi |
-| --- | --- |
-| `--amount` | Warna nominal |
-| `--donator` | Warna nama donator |
-| `--text` | Warna pesan |
-| `--hiyuki-*` | Palet dari `DESIGN.md` |
-| `--alert-width` | Lebar pilihan, tetap dibatasi `80vw` |
-| `--alert-top` | Jarak alert dari atas canvas |
+| Properti           | Fungsi                                             |
+| ------------------ | -------------------------------------------------- |
+| `--amount`         | Warna nominal                                      |
+| `--donator`        | Warna nama donator                                 |
+| `--text`           | Warna pesan                                        |
+| `--hiyuki-*`       | Palet dari `DESIGN.md`                             |
+| `--alert-width`    | Lebar pilihan, tetap dibatasi `80vw`               |
+| `--alert-top`      | Jarak alert dari atas canvas                       |
 | `--alert-duration` | Total durasi, harus sama dengan pengaturan Saweria |
-| `--exit-duration` | Lama transisi keluar |
+| `--exit-duration`  | Lama transisi keluar                               |
 
 Token tetap `{amount}`, `{donator}`, `{message}`, dan `{media}`. Jangan mengganti token dengan data contoh pada file produksi.
 
@@ -58,45 +47,14 @@ Dukungan ini untuk media gambar, bukan asumsi bahwa Saweria menyisipkan HTML, vi
 
 Animasi dasar ada dalam `style.css`; tidak ada modul tambahan yang perlu disalin.
 
-| Fase | Waktu default |
-| --- | --- |
-| Sakura dan ember masuk | Mulai `0` ms |
-| Frost dan crimson sweep | `150-400` ms |
-| Frame muncul | `250-700` ms |
-| Amount dan donator muncul | `400-800` ms |
-| Message dan media muncul | `600-950` ms |
-| Hold tanpa gerakan berulang | `950-9400` ms |
-| Pulse, petal keluar, fade | `9400-10000` ms |
+| Fase                        | Waktu default   |
+| --------------------------- | --------------- |
+| Sakura dan ember masuk      | Mulai `0` ms    |
+| Frost dan crimson sweep     | `150-400` ms    |
+| Frame muncul                | `250-700` ms    |
+| Amount dan donator muncul   | `400-800` ms    |
+| Message dan media muncul    | `600-950` ms    |
+| Hold tanpa gerakan berulang | `950-9400` ms   |
+| Pulse, petal keluar, fade   | `9400-10000` ms |
 
 Reduced motion menampilkan informasi langsung, menonaktifkan partikel bergerak, dan mempertahankan fade pendek pada akhir durasi. Tidak ada animasi infinite.
-
-## Design decisions
-
-- Charcoal solid di belakang teks menjaga kontras tanpa bergantung pada gameplay. Canvas di luar frame tetap transparan.
-- Sudut asimetris dan garis frost membentuk geometri tajam tanpa pola HUD atau neon RGB.
-- Crimson hanya pada donor dan garis energi; sakura serta ember tetap kecil agar nominal dominan.
-- Segoe UI dengan fallback Arial menjaga pesan mudah dibaca tanpa request font eksternal.
-- Kelopak membentuk sakura kecil di atas nominal. Gerakan hanya pada entry dan exit agar hold tenang.
-- Padding memisahkan simbol, nominal, dan pesan; media berada di bawahnya agar tidak menutupi teks.
-- ENERGY 2 / RHYTHM 1 / MOTION 2: satu komposisi terpusat dengan transisi singkat, bukan loop dekoratif.
-
-## Development and testing
-
-Baca `AGENTS.md`, `DESIGN.md`, `SPEC.md`, `ARCHITECTURE.md`, `PRD.md`, dan `TESTING.md`. Checklist yang ada berada di `TASK.md`.
-
-File produksi tidak membutuhkan instalasi dependency. `tests/hiyuki.cjs` adalah pemeriksaan pengembangan opsional berbasis Node dan Playwright Core yang sudah tersedia di lingkungan pengembang, bukan build step.
-
-```sh
-node tests/hiyuki.cjs
-```
-
-Jika Playwright Core berada di luar project, arahkan `PLAYWRIGHT_CORE` ke instalasi tersebut. Browser Chromium yang cocok juga harus tersedia. Contoh PowerShell:
-
-```powershell
-$env:PLAYWRIGHT_CORE = 'C:/path/to/node_modules/playwright-core'
-node tests/hiyuki.cjs
-```
-
-Pemeriksaan mencakup token, dependency, kontras, ukuran viewport, konten panjang, media gambar lokal, entry/hold/exit, reduced motion, dan resize teks. Pemeriksaan menyimpan screenshot data contoh ke `template/hiyuki/assets/preview/hiyuki-preview.png` setelah lulus.
-
-Pemeriksaan browser lokal tidak menggantikan Saweria atau OBS. Lihat status verifikasi dan pengujian manual di `TESTING.md`.
