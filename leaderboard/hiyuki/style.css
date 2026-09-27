@@ -1,0 +1,143 @@
+
+:root {
+  /* Canvas */
+  --canvas-width: 768px;
+  --canvas-height: 512px;
+
+  /* Area data Saweria */
+  --widget-x: 196px;
+  --widget-y: 177px;
+  --widget-width: 370px;
+  --widget-height: 260px;
+
+  --sakura: #e58b9c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+.overlay {
+  position: relative;
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+  overflow: hidden;
+}
+
+/* Background */
+
+.background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* Optional positioning guide */
+
+.leaderboard-guide {
+  display: none;
+  position: absolute;
+  z-index: 3;
+
+  left: var(--widget-x);
+  top: var(--widget-y);
+
+  width: var(--widget-width);
+  height: var(--widget-height);
+
+  border: 2px dashed #e58b9c;
+  background: rgba(183, 25, 53, 0.12);
+
+  pointer-events: none;
+}
+
+/* Change display to block while aligning OBS */
+
+/* Sakura */
+
+.sakura-container {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  top: -10%;
+  color: var(--sakura);
+  opacity: 0;
+
+  font-size: 14px;
+  text-shadow: 0 0 8px #ff456b;
+
+  animation: fall 10s linear infinite;
+}
+
+.petal:nth-child(1) {
+  left: 10%;
+  animation-delay: -2s;
+}
+
+.petal:nth-child(2) {
+  left: 23%;
+  animation-delay: -7s;
+  animation-duration: 12s;
+}
+
+.petal:nth-child(3) {
+  left: 76%;
+  animation-delay: -4s;
+}
+
+.petal:nth-child(4) {
+  left: 85%;
+  animation-delay: -9s;
+  animation-duration: 13s;
+}
+
+.petal:nth-child(5) {
+  left: 40%;
+  animation-delay: -6s;
+}
+
+.petal:nth-child(6) {
+  left: 94%;
+  animation-delay: -3s;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate(0, -20px) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: .75;
+  }
+
+  50% {
+    transform: translate(24px, 270px) rotate(180deg);
+  }
+
+  85% {
+    opacity: .5;
+  }
+
+  100% {
+    transform: translate(-20px, 550px) rotate(360deg);
+    opacity: 0;
+  }
+}
